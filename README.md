@@ -54,15 +54,16 @@ This is the hardest part of creating the game server. Defining the protocol.
 
 Functionality we need to provide:
 
+* Creating a WebSocket
 * Create and join games
 * Auto join players
 * Retrieve game state
-	* positions of other snakes
-    	* Array of coordinates and how long they will grow to
+    * current turn
+    * positions of other snakes
+        * Array of coordinates and how long they will grow to
     * positions of walls
     * position of mice (along with next 3 moves)
     * positions of apples
     * current scores
-* Queue actions
-* Remove actions
+* Move snake, wait til next turn, return state.
 * wait until start of turn X then return state.
