@@ -1,0 +1,15 @@
+@(games: Seq[ai.rattlesnakes.server.models.Game])
+
+<html>
+
+    <body>
+
+        <ul>
+            @games.map { game =>
+                <li>@game.id</li>
+            }
+        </ul>
+
+    </body>
+
+</html>
