@@ -41,7 +41,6 @@ class GameServer {
     } catch {
       case NonFatal(e) =>
     }
-    Game.clearGames()
   }
 
 }
