@@ -3,7 +3,7 @@
 Can you write an AI to get the highest score in this RattleSnake™ game?
 
 
-Write a JSON HTTP REST API client to play this game
+Write an ai client to play this game via sockets
 
 #Game Description
 
@@ -55,8 +55,8 @@ This is the hardest part of creating the game server. Defining the protocol.
 Functionality we need to provide:
 
 * Creating a WebSocket - Barlocker
-* Create and join games - Stringham
-* Auto join players - Stringham
+* <del> Create and join games - Stringham </del>
+* <del> Auto join players - Stringham </del>
 * Retrieve game state - Paul
     * current turn
     * positions of other snakes
@@ -66,3 +66,65 @@ Functionality we need to provide:
     * positions of apples
     * current scores
 * Move snake, wait til next turn, return state. - Barlocker
+
+
+
+###Creating a game
+
+Connect to the server on port ```8020``` and send the following command
+```
+new-game <num-players> [<public> <board-width> <board-height>]
+```
+
+####Required Parameter
+
+```<num-players>```  is a required field that determines how many snakes will be on the board. Must be between 2 and 4.
+
+####Optional Parameters
+
+```<public>``` Either ```0``` or ``1``. ```0``` means that players must join this game by id, and ```1``` means this game can be auto-joined. Defaults to ```0```
+
+```<board-width>``` and ```<board-height>``` a number specifying how many cells wide and high the board is, respectively. If ```<board-width>``` is specified ```<board-height``` is required. Must be a number between 20 and 100.
+
+If successful, you will receive a response of
+
+```
+created <game-id>
+```
+where ```<game-id>``` is the id of the game that was created. You will automatically join that game and wait for it to begin.
+
+
+
+###Joining a game
+
+There are two ways to join a game, you can join by id, or be automatically placed in an available game. 
+
+To join a specific game connect to the server on port ```8020``` and send the following command
+
+```
+join <game-id>
+```
+
+If the game-id is valid and there is room for another player you will receive the response
+
+```
+welcome to game <game-id> <num-current-players>/<total-players>
+```
+
+To be automatically placed in an available game you can optionally request the number of opponents. Connect and send:
+
+```
+autojoin [<num-players]
+```
+
+Where ```<num-players>``` is an optional parameter of the desired game size you want to participate.
+
+You will receive the response
+
+```
+welcome to game <game-id> <num-current-players>/<total-players>
+```
+Auto joining a game will create a game if no games are currently waiting for new players.
+
+Once you have succesfully joined a game, continue listening on the port. You will be notified when each player joins and when the game starts.
+
