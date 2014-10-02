@@ -47,6 +47,9 @@ When one of these conditions happen the game is over.
 * The last remaining snake has had 500 turns alone
 * No apples or mice have been eaten in 500 consecutive turns
 
+## API
+
+See the API documentation [here](documentation/api.md).
 
 #Protocol
 

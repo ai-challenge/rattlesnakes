@@ -1,3 +1,19 @@
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /                                      ai.rattlesnakes.server.controllers.IndexController.get
 
-GET     /games                      ai.rattlesnakes.server.controllers.GameController.list()
+GET     /assets/*file                          controllers.Assets.at(path = "/public", file)
+
+GET     /games                                 ai.rattlesnakes.server.controllers.games.GamesController.get
+
+POST    /games                                 ai.rattlesnakes.server.controllers.games.GamesController.post
+
+GET     /games/:gameId                         ai.rattlesnakes.server.controllers.games.GamesController.get(id: Int)
+
+POST    /games/:gameId/players                 ai.rattlesnakes.server.controllers.games.PlayersController.post(gameId: Int)
+
+GET     /games/:gameId/status                  ai.rattlesnakes.server.controllers.games.StatusController.get(gameId: Int)
+
+GET     /games/:gameId/turns/:turn             ai.rattlesnakes.server.controllers.games.TurnsController.get(gameId: Int, turn: Int)
+
+PUT     /games/:gameId/turns/:number/:player   ai.rattlesnakes.server.controllers.games.TurnsController.put(gameId: Int, number: Int, player)
+
+# TODO(paul): use routesImport, once https://github.com/playframework/playframework/issues/3470 is fixed

@@ -1,9 +1,11 @@
 package ai.rattlesnakes.server.controllers
 
-import play.api.mvc.Controller
+import play.api.mvc.{Action, Controller}
 
-class IndexController extends Controller {
+object IndexController extends Controller {
 
-  def get() = Redirect(routes.GameController.list())
+  def get = Action {
+    Ok//Redirect(routes.games.GamesController.get())
+  }
 
 }
