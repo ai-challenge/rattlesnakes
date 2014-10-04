@@ -58,10 +58,10 @@ The game is played by creating a socket, connecting to port 8020 on the server, 
 
 ###Request
 
-To create a private game (only you know the ID), send this message to the server.
+To create a game specifying all options, send this message to the server.
 
 ```
-new-game <num-players> <board-width> <board-height> <percent-walls> <percent-apples> <percent-mice>
+new-game <num-players> <board-width> <board-height> <percent-walls> <percent-apples> <percent-mice> <public> <your-name>
 ```
 
 ```<num-players>``` determines how many snakes will be on the board. The server will wait to start the game until this many players have connected. Must be between 2 and 4.
@@ -70,6 +70,9 @@ new-game <num-players> <board-width> <board-height> <percent-walls> <percent-app
 
 ```<percent-walls>```, ```<percent-apples>```, and ```<percent-mice>``` are all floating point numbers, between 0.0 and 1.0, that will determine the percent of squares on the board that will contain those items. The sum of these numbers must be less than 1.0, and is recommended to be less than 0.5.
 
+```<public>``` is ```1``` if others can autojoin and ```0``` if they must use the ```<game-id>``` to join.
+
+```<your-name>``` is the name of your snake, must be unique per game, and will be reported in the [visualization tool](#Visualization-tool), [game status](#Game-Status), and joined/left resonses.
 
 ###Response
 
@@ -101,7 +104,7 @@ join <game-id> <your-name>
 
 ```<game-id>``` is given to you when you [created a game](#Creating-a-game).
 
-```<your-name>``` is the name of your snake, and will be reported in the [visualization tool](#Visualization-Tool), [game status](#Game-Status), and joined/left responses.
+```<your-name>``` is the name of your snake, must be unique per game, and will be reported in the [visualization tool](#Visualization-Tool), [game status](#Game-Status), and joined/left responses.
 
 ###Response
 
@@ -304,4 +307,4 @@ state <game-status>
 }
 ```
 
-In the game status, the player's ```growth``` represents the number of turns the tail will remain in the same position while the snake is growing. The ```vertices``` of a player's snake begin with the snake's head and end with the tail. All coordinates are given as 2-element arrays with ```[x, y]``` format. The ```time``` indicates how many milliseconds until the end of this turn.
+In the game status, the player's ```growth``` represents the number of turns the tail will remain in the same position while the snake is growing. The ```vertices``` of a player's snake begin with the snake's head and end with the tail. All coordinates are given as 2-element arrays with ```[x, y]``` format with ```[0,0]``` being the top left cell. Along the X-axis, values increase towards the right edge of the board. Along the Y-axis, values increase towards the bottom edge of the board. The ```time``` indicates how many milliseconds until the end of this turn.
