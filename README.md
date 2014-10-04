@@ -70,7 +70,7 @@ new-game <num-players> <board-width> <board-height> <percent-walls> <percent-app
 
 ```<percent-walls>```, ```<percent-apples>```, and ```<percent-mice>``` are all floating point numbers, between 0.0 and 1.0, that will determine the percent of squares on the board that will contain those items. The sum of these numbers must be less than 1.0, and is recommended to be less than 0.5.
 
-```<public>``` is ```1``` if others can autojoin and ```0``` if they must use the ```<game-id>``` to join.
+```<public>``` is ```public``` if others can autojoin and ```private``` if they must use the ```<game-id>``` to join.
 
 ```<your-name>``` is the name of your snake, must be unique per game, and will be reported in the [visualization tool](#Visualization-tool), [game status](#Game-Status), and joined/left resonses.
 
