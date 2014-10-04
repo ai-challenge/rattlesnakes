@@ -20,7 +20,7 @@ Turns are made every 500ms to begin with, and get faster as time goes on. If you
 
 When you request the state of the game you receive information about the grid, the current turn, and when the next turn will take place.
 
-Walls and apples are immovable. Snakes and mice move freely. Your snake can detect the next few moves of all the mice on the grid.
+Walls and apples are immovable. Snakes and mice move freely. Your snake can detect the next few moves of all the mice on the grid. However, a mouse will change its plans if a snake gets in its way.
 
 ##Scoring
 You can earn points in the following ways:
