@@ -308,3 +308,72 @@ state <game-status>
 ```
 
 In the game status, the player's ```growth``` represents the number of turns the tail will remain in the same position while the snake is growing. The ```vertices``` of a player's snake begin with the snake's head and end with the tail. All coordinates are given as 2-element arrays with ```[x, y]``` format with ```[0,0]``` being the top left cell. Along the X-axis, values increase towards the right edge of the board. Along the Y-axis, values increase towards the bottom edge of the board. The ```time``` indicates how many milliseconds until the end of this turn.
+
+
+##Game Board Types
+
+There are 3 types of game boards.
+
+In the illustrations that follow ```|``` and ```-``` are board boundaries and don't take up a position on the board. ```#``` is a permanent obstacle.
+
+In both opened and contained boards you may have walls or no walls in the board.
+
+###Contained
+
+A contained board has walls all the way around the board.
+
+```
+-------------------------------
+|#############################|
+|#                           #|
+|#                           #|
+|#                           #|
+|#                           #|
+|#                           #|
+|#                           #|
+|#                           #|
+|#                           #|
+|#                           #|
+|#############################|
+-------------------------------
+```
+
+### Open
+
+An open board does not have walls around the board, and snakes can travel through the edges of the board to the opposite sides.
+
+```
+-------------------------------
+|                             |
+|                             |
+|                             |
+|                             |
+|                             |
+|                             |
+|                             |
+|                             |
+|                             |
+|                             |
+|                             |
+-------------------------------
+```
+
+###Pac Man
+
+A Pac Man board resembles a board from the pac man game, and has a maze of walls.
+
+```
+-------------------------------
+|#############################|
+|#             #             #|
+|# ##### ##### # ##### ##### #|
+|#                           #|
+|##### #### ####### #### #####|
+|           #     #           |
+|##### #### ####### #### #####|
+|#     #               #     #|
+|# ### # ###### ###### # ### #|
+|#                           #|
+|#############################|
+-------------------------------
+```
