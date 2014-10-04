@@ -1,4 +1,6 @@
 .idea
+*.sublime*
+*.ensime*
 
 target/
 
